@@ -1,5 +1,6 @@
 import pygame
 import random
+from pygame.locals import *
 
 pygame.init()
 
@@ -48,6 +49,20 @@ def move_fish():
 def main():
   while True:
     clock.tick(60)
+
+    for event in pygame.event.get():
+      if event.type == quit:
+        sys.exit()
+      if event.type == MOUSEBUTTONDOWN:
+        print("")
+      if event.type == KEYDOWN:
+        if event.key == K_g:
+          speed[0] = 0
+          speed[1] = 0
+        if event.key == K_s:
+          speed[0] = 10
+          speed[1] = 10
+
     move_fish()
     screen.fill(color)
     screen.blit(fish_image, fish_rect)
